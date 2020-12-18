@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Our Custom Manager
 
@@ -34,7 +35,7 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, related_name='blog_post')
 
     # is the 'body' of the post
-    body = models.TextField()
+    body = RichTextUploadingField(blank=True)
 
     # the publish date
     publish = models.DateTimeField(default=timezone.now)

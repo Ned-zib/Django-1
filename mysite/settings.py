@@ -32,6 +32,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # CKEditor https://samulinatri.com/blog/django-ckeditor-codesnippet-hightlightjs-youtube/
+    'ckeditor',
+    'ckeditor_uploader',
+    # END
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',             ##We need to activate each app in order to django can use it and create models and everything
 ]
+
+###
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+MEDIA_URL = '/media/' 
+MEDIA_ROOT = 'media/'
+###
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,7 +66,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], ###CKEditor
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

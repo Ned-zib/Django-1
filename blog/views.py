@@ -4,10 +4,15 @@ from blog.models import Post
 from django.views.generic import ListView
 from .forms import EmailPostForm
 from django.core.mail import send_mail
+from django.views.generic import DetailView
+
 # Getting all the published post
 
 # Class-Based Views
 
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'blog/post_detail.html'
 
 class PostListView(ListView):
     queryset = Post.published.all()
